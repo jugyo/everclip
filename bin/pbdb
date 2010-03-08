@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.dirname(__FILE__) + "/../lib")
+
+require 'rubygems'
+require 'pbdb'
+
+PBDB::Logger.run
+PBDB::Server.run # TODO: use options for host and port
