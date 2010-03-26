@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+require "sinatra"
+
 module PBDB
   class Server < Sinatra::Base
     dir = File.dirname(File.expand_path(__FILE__))

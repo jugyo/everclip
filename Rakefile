@@ -10,6 +10,9 @@ begin
     gem.email = "kkohno@gmail.com"
     gem.homepage = "http://github.com/jugyo/pbdb"
     gem.authors = ["jugyo"]
+    gem.add_development "pb"
+    gem.add_development "sinatra"
+    gem.add_development "sequel"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

@@ -1,9 +1,16 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
 require 'pbdb'
 
-PBDB::Logger.run
-PBDB::Server.run # TODO: use options for host and port
+# TODO: handle options => 'start', 'stop', 'restart'
+
+option = ARGV.shift
+if /^(start|stop|restart)$/ =~ option
+  PBDB.send(option.to_sym)
+else
+  puts "Usage: pbdb start|stop|restart"
+end
