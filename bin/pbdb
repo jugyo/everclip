@@ -6,6 +6,8 @@ $:.unshift(File.dirname(__FILE__) + "/../lib")
 require 'rubygems'
 require 'pbdb'
 
+# TODO: fix to show help
+
 option = ARGV.shift
 if /^(start|stop|restart|open)$/ =~ option
   PBDB.send(option.to_sym)
