@@ -21,10 +21,16 @@ module EverClip
     end
 
     def self.stored?(text, duration = nil)
+      text_sha1 = sha1(text)
+
+      if clip = order(:created_at.desc).first
+        return true if clip.sha1 == text_sha1
+      end
+
       if duration
-        !filter('created_at > ? and sha1 = ?', Time.now - duration, sha1(text)).empty?
+        !filter('created_at > ? and sha1 = ?', Time.now - duration, text_sha1).empty?
       else
-        !filter('sha1 = ?', sha1(text)).empty?
+        !filter('sha1 = ?', text_sha1).empty?
       end
     end
 

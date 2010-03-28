@@ -26,6 +26,12 @@ describe "EverClip::Clip" do
     EverClip::Clip << {:sha1 => EverClip::Clip.sha1('foo'), :text => 'foo', :created_at => Time.now - 60}
 
     EverClip::Clip.stored?('foo').should be_true
+    EverClip::Clip.stored?('foo', 70).should be_true
+
+    EverClip::Clip << {:sha1 => EverClip::Clip.sha1('bar'), :text => 'bar', :created_at => Time.now}
+
+    EverClip::Clip.stored?('foo').should be_true
+    EverClip::Clip.stored?('foo', 70).should be_true
     EverClip::Clip.stored?('foo', 10).should be_false
   end
 end
