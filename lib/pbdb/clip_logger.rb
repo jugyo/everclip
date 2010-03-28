@@ -3,7 +3,7 @@
 require 'pb'
 
 module PBDB
-  class Clipd
+  class ClipLogger
     class << self
       attr_accessor :interval
       attr_accessor :ignore_duplication

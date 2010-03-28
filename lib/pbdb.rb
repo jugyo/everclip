@@ -10,7 +10,7 @@ module PBDB
   DB       = Sequel.sqlite(File.join(DIR, 'db'))
 
   require 'pbdb/clip'
-  require 'pbdb/clipd'
+  require 'pbdb/clip_logger'
   require 'pbdb/server'
 
   class << self
@@ -20,10 +20,10 @@ module PBDB
 
       File.open(PID_FILE, 'w') { |f| f << Process.pid }
 
-      PBDB::Clipd.run!
+      PBDB::ClipLogger.run!
 
       at_exit do
-        PBDB::Clipd.stop!
+        PBDB::ClipLogger.stop!
         puts "## PBDB has ended ##"
       end
 
