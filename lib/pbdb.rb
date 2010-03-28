@@ -5,8 +5,8 @@ require "sequel"
 
 module PBDB
   DIR      = File.expand_path("~/.pbdb") unless defined? DIR
-  CONFIG   = YAML.load_file(File.join(DIR, 'config'))
-  PID_FILE = File.join(DIR, 'pid') # TODO: check config
+  CONFIG   = YAML.load_file(File.join(DIR, 'config')) # TODO: check config
+  PID_FILE = File.join(DIR, 'pid')
   DB       = Sequel.sqlite(File.join(DIR, 'db'))
 
   require 'pbdb/clip'
