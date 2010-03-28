@@ -13,7 +13,8 @@ begin
     gem.add_development "pb"
     gem.add_development "sinatra"
     gem.add_development "sequel"
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "rspec", ">= 0"
+    gem.add_development_dependency "rr", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

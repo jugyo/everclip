@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 require 'pb'
-require "sequel"
 require 'digest/sha1'
 
 module PBDB
