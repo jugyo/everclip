@@ -5,15 +5,19 @@ require 'pb'
 module PBDB
   class Clipd
     class << self
+      attr_accessor :interval
+      attr_accessor :ignore_duplication
 
       def run!
         @running = true
+        interval ||= 2
+        ignore_duplication ||= 60 * 60
 
         Thread.start do
           begin
             while @running do
               clip!
-              sleep 10
+              sleep interval
             end
             puts "has ended"
           rescue => e
@@ -29,12 +33,12 @@ module PBDB
 
       def clip!
         text = PB.read
-        return if Clip.stored?(text, 60 * 60)
+        return if Clip.stored?(text, ignore_duplication)
         Clip << text
         puts <<EOS
 ## clip -------
 #{text}
-## ------------
+------------
 EOS
       end
     end
