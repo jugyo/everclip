@@ -1,0 +1,18 @@
+%html
+  %head
+    %title EverClip
+    %link{:rel => 'stylesheet', :href => '/css', :type => 'text/css'}
+    %script{:language => 'javascript', :src => '/jquery.js'}
+  %body
+    #search
+      %input#search{:type => 'text', :size => 60}
+    #clips
+      %ul
+        - @clips.each do |clip|
+          %li.clip
+            %pre.text= clip.text
+
+    :javascript
+      $(function() {
+        
+      });

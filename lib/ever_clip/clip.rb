@@ -11,6 +11,10 @@ module EverClip
   end
 
   class Clip < Sequel::Model
+    def title
+      text.split(//)[0..20].join
+    end
+
     def self.<<(arg)
       case arg
       when String
