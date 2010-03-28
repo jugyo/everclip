@@ -2,7 +2,7 @@
 
 require 'digest/sha1'
 
-module PBDB
+module EverClip
   db.create_table? :clips do
     primary_key :id
     String :sha1, :null => false

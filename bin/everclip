@@ -4,14 +4,14 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-require 'pbdb'
+require 'ever_clip'
 
 # TODO: fix to show help
 
 if /^(start|stop|restart|open|config)$/ =~ ARGV[0]
   mode = $1
-  PBDB.init(ARGV[1])
-  PBDB.send(mode)
+  EverClip.init(ARGV[1])
+  EverClip.send(mode)
 else
-  puts "Usage: pbdb start|stop|restart|open"
+  puts "Usage: everclip start|stop|restart|open"
 end

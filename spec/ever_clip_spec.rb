@@ -2,17 +2,17 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "PBDB" do
+describe "EverClip" do
   it 'should init ClipLogger and Server' do
-    config = YAML.load_file(PBDB.config_file_path)
-    mock(PBDB::ClipLogger).run!(
+    config = YAML.load_file(EverClip.config_file_path)
+    mock(EverClip::ClipLogger).run!(
       :interval => config[:interval],
       :ignore_duplication => config[:ignore_duplication]
     )
-    mock(PBDB::Server).run!(
+    mock(EverClip::Server).run!(
       :Host => config[:host],
       :Port => config[:port]
     )
-    PBDB.start
+    EverClip.start
   end
 end

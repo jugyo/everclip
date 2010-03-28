@@ -3,18 +3,18 @@
 require "yaml"
 require "sequel"
 
-module PBDB
-  PID_FILE = "/tmp/pbdb_pid"
+module EverClip
+  PID_FILE = "/tmp/ever_clip_pid"
 
   class << self
     attr_reader :dir, :db
 
     def init(dir)
-      @dir = File.expand_path(dir || "~/.pbdb")
+      @dir = File.expand_path(dir || "~/.ever_clip")
       @db = Sequel.sqlite(File.join(@dir, 'db'))
-      require 'pbdb/clip'
-      require 'pbdb/clip_logger'
-      require 'pbdb/server'
+      require 'ever_clip/clip'
+      require 'ever_clip/clip_logger'
+      require 'ever_clip/server'
     end
 
     def config
@@ -42,20 +42,20 @@ EOS
       config = YAML.load_file(config_file_path)
       config = {} unless config.is_a?(Hash)
 
-      PBDB::ClipLogger.run!(
+      EverClip::ClipLogger.run!(
         :interval => config[:interval] || 2,
         :ignore_duplication => config[:ignore_duplication] || 60 * 60
       )
 
       at_exit do
-        PBDB::ClipLogger.stop!
+        EverClip::ClipLogger.stop!
         remove_pid_file
-        puts "## PBDB has ended ##"
+        puts "## EverClip has ended ##"
       end
 
-      puts "## PBDB has started ##"
+      puts "## EverClip has started ##"
 
-      PBDB::Server.run!(
+      EverClip::Server.run!(
         :Host => config[:host] || 'localhost',
         :Port => config[:port] || 4567
       )

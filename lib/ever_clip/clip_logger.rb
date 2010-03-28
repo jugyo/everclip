@@ -2,7 +2,7 @@
 
 require 'pb'
 
-module PBDB
+module EverClip
   class ClipLogger
     class << self
       def run!(options)
