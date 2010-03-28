@@ -12,7 +12,7 @@ module PBDB
         Thread.start do
           begin
             while @running do
-              log
+              clip!
               sleep 10
             end
             puts "has ended"
@@ -27,9 +27,9 @@ module PBDB
         @running = false
       end
 
-      def log
+      def clip!
         text = PB.read
-        return unless Clip.stored?(text, 60 * 60)
+        return if Clip.stored?(text, 60 * 60)
         Clip << text
         puts <<EOS
 ## clip -------
