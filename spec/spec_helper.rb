@@ -6,7 +6,8 @@ require 'spec/autorun'
 
 module PBDB
   DIR = File.dirname(__FILE__)
-  File.delete(File.join(DIR, 'db'))
+  db_file_path = File.join(DIR, 'db')
+  File.delete(db_file_path) if File.exists?(db_file_path)
 end
 
 require 'pbdb'
