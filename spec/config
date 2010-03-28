@@ -1,0 +1,4 @@
+:host: localhost
+:port: 5678
+:interval: 2
+:ignore_duplication: 60

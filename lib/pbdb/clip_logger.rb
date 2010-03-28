@@ -5,18 +5,16 @@ require 'pb'
 module PBDB
   class ClipLogger
     class << self
-      attr_accessor :interval
-      attr_accessor :ignore_duplication
+      def run!(options)
+        interval = options[:interval]
+        ignore_duplication = options[:ignore_duplication]
 
-      def run!
         @running = true
-        interval ||= 2
-        ignore_duplication ||= 60 * 60
 
         Thread.start do
           begin
             while @running do
-              clip!
+              clip!(ignore_duplication)
               sleep interval
             end
             puts "has ended"
@@ -31,7 +29,7 @@ module PBDB
         @running = false
       end
 
-      def clip!
+      def clip!(ignore_duplication)
         text = PB.read
         return if Clip.stored?(text, ignore_duplication)
         Clip << text
