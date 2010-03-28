@@ -1,0 +1,28 @@
+@import url(reset.css)
+
+=rounded(!radius)
+  :border-radius = !radius
+  :-webkit-border-radius = !radius
+  :-moz-border-radius = !radius
+
+#wrap
+  padding: 8px
+
+li.clip
+  border: solid 1px silver
+  margin: 4px 0
+
+  pre.text
+    border-top: solid 1px silver
+    padding: 4px
+
+  a.title
+    font-weight: bold
+    padding: 2px
+    display: block
+    &:active, &:visited, &:hover, &:link
+      color: #555
+      text-decoration: none
+      background-color: #DDD
+    &:hover
+      background-color: #FFF
