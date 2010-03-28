@@ -9,7 +9,7 @@ module EverClip
   class << self
     attr_reader :dir, :db
 
-    def init(dir)
+    def init(dir = nil)
       @dir = File.expand_path(dir || "~/.ever_clip")
       @db = Sequel.sqlite(File.join(@dir, 'db'))
       require 'ever_clip/clip'
