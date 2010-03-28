@@ -1,8 +1,9 @@
 * Web インターフェースを実装する
-* サイトを作る => githubpages で
 * rename to 'everclip'
 * favicon を作る
 * ajax search
 * search keyword highlight
 * reset.css を使う
 * 削除機能
+* プラグイン機構
+* サイトを作る => githubpages で
