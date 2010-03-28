@@ -20,6 +20,14 @@ module PBDB
       end
     end
 
+    def self.stored?(text, duration = nil)
+      if duration
+        !filter('created_at > ? and sha1 = ?', Time.now - duration, sha1(text)).empty?
+      else
+        !filter('sha1 = ?', sha1(text)).empty?
+      end
+    end
+
     def self.sha1(text)
       Digest::SHA1.hexdigest(text)
     end
