@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 require 'pb'
-require 'digest/sha1'
 
 module PBDB
-  class Logger
+  class Clipd
     class << self
 
       def run!
@@ -30,11 +29,8 @@ module PBDB
 
       def log
         text = PB.read
-        sha1 = Digest::SHA1.hexdigest(text)
-        return if sha1 == @last_clip_sha1
-
-        @last_clip_sha1 = sha1
-        # TODO: store clipboard text
+        return unless Clip.stored?(text, 60 * 60)
+        Clip << text
         puts <<EOS
 ## clip -------
 #{text}

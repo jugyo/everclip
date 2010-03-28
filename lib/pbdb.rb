@@ -9,9 +9,9 @@ module PBDB
   PID_FILE = File.join(DIR, 'pid') # TODO: check config
   DB       = Sequel.sqlite(File.join(DIR, 'db'))
 
-  require 'pbdb/logger'
-  require 'pbdb/server'
   require 'pbdb/clip'
+  require 'pbdb/clipd'
+  require 'pbdb/server'
 
   class << self
     def start
@@ -20,10 +20,10 @@ module PBDB
 
       File.open(PID_FILE, 'w') { |f| f << Process.pid }
 
-      PBDB::Logger.run!
+      PBDB::Clipd.run!
 
       at_exit do
-        PBDB::Logger.stop!
+        PBDB::Clipd.stop!
         puts "## PBDB has ended ##"
       end
 
