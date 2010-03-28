@@ -10,9 +10,11 @@ begin
     gem.email = "kkohno@gmail.com"
     gem.homepage = "http://github.com/jugyo/ever_clip"
     gem.authors = ["jugyo"]
-    gem.add_development "pb"
-    gem.add_development "sinatra"
-    gem.add_development "sequel"
+    gem.add_dependency "pb"
+    gem.add_dependency "sinatra"
+    gem.add_dependency "sequel"
+    gem.add_dependency "haml"
+    gem.add_dependency "sass"
     gem.add_development_dependency "rspec", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
