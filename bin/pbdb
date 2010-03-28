@@ -8,9 +8,10 @@ require 'pbdb'
 
 # TODO: fix to show help
 
-option = ARGV.shift
-if /^(start|stop|restart|open)$/ =~ option
-  PBDB.send(option.to_sym)
+if /^(start|stop|restart|open|config)$/ =~ ARGV[0]
+  mode = $1
+  PBDB.init(ARGV[1])
+  PBDB.send(mode)
 else
   puts "Usage: pbdb start|stop|restart|open"
 end

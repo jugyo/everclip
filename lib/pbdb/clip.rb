@@ -3,7 +3,7 @@
 require 'digest/sha1'
 
 module PBDB
-  DB.create_table? :clips do
+  db.create_table? :clips do
     primary_key :id
     String :sha1, :null => false
     String :text, :text => true, :null => false
