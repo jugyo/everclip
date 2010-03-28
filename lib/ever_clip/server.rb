@@ -15,7 +15,7 @@ module EverClip
     end
 
     get '/' do
-      # TODO: リスト表示、ペジング、検索
+      # TODO: リスト表示、ページング、検索
       haml :index
     end
 
