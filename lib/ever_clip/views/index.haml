@@ -3,7 +3,6 @@
     %title EverClip
     %link{:rel => 'stylesheet', :href => '/css', :type => 'text/css'}
     %script{:language => 'javascript', :src => '/jquery.js'}
-    %script{:language => 'javascript', :src => '/jquery.scrollTo.js'}
   %body
     #wrap
       #try_me
@@ -20,7 +19,6 @@
 
     :javascript
       var currentIndex = 0;
-      var scrollOffset = -200;
       $(function() {
         var targetLi = function(index) {
           return $($('#clips li')[index]);
@@ -29,7 +27,7 @@
         var openClip = function(index) {
           var target = targetLi(index);
           $('.text', target).toggle();
-          $.scrollTo(target, {offset: {left: 0, top: scrollOffset}});
+          // TODO: 一番下の clip を開いたときにそれが見えるようにスクロールしたい
         };
 
         var moveTo = function(index) {
@@ -37,15 +35,12 @@
             return;
           }
 
-          var oldIndex = currentIndex;
-          currentIndex = index;
-
-          targetLi(oldIndex).removeClass('selected');
-
-          var target = targetLi(currentIndex)
-          target.addClass('selected');
-          $.scrollTo(target, {offset: {top: scrollOffset}});
+          $('a.title', targetLi(index)).focus();
         };
+
+        $('a.title').focus(function() {
+          currentIndex = $('a.title').index(this);
+        });
 
         $(window).keydown(function(e){
           if (e.keyCode == 74) {        // 'j'
