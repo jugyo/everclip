@@ -3,6 +3,8 @@
     %title EverClip
     %link{:rel => 'stylesheet', :href => '/css', :type => 'text/css'}
     %script{:language => 'javascript', :src => '/jquery.js'}
+    %script{:language => 'javascript', :src => '/jquery.scrollTo.js'}
+    %script{:language => 'javascript', :src => '/app.js'}
   %body
     #wrap
       #try_me
@@ -15,42 +17,3 @@
               .clip
                 %a.title{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
                 %pre.text{:style => 'display: none', :id => "clip_#{clip.id}"}= clip.text
-        
-
-    :javascript
-      var currentIndex = 0;
-      $(function() {
-        var targetLi = function(index) {
-          return $($('#clips li')[index]);
-        }
-
-        var openClip = function(index) {
-          var target = targetLi(index);
-          $('.text', target).toggle();
-          // TODO: 一番下の clip を開いたときにそれが見えるようにスクロールしたい
-        };
-
-        var moveTo = function(index) {
-          if (index < 0 || index >= $('#clips li').length) {
-            return;
-          }
-
-          $('a.title', targetLi(index)).focus();
-        };
-
-        $('a.title').focus(function() {
-          currentIndex = $('a.title').index(this);
-        });
-
-        $(window).keydown(function(e){
-          if (e.keyCode == 74) {        // 'j'
-            moveTo(currentIndex + 1);
-          } else if (e.keyCode == 75) { // 'k'
-            moveTo(currentIndex - 1);
-          } else if (e.keyCode == 79) { // 'o'
-            openClip(currentIndex);
-          }
-        });
-
-        moveTo(0);
-      });
