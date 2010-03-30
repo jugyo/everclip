@@ -16,4 +16,4 @@
             %li
               .clip
                 %a.title{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
-                %pre.text{:style => 'display: none', :id => "clip_#{clip.id}"}= clip.text
+                %pre.text{:id => "clip_#{clip.id}"}= clip.text
