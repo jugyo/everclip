@@ -15,5 +15,7 @@
           - @clips.each do |clip|
             %li
               .clip
-                %a.title{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
-                %pre.text{:id => "clip_#{clip.id}"}= clip.text
+                .title
+                  %a{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
+                .text
+                  %pre{:id => "clip_#{clip.id}"}= clip.text
