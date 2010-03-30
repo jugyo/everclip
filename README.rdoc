@@ -1,4 +1,4 @@
-= ever_clip
+= everclip
 
 Description goes here.
 

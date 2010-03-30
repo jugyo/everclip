@@ -4,17 +4,16 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "ever_clip"
+    gem.name = "everclip"
     gem.summary = %Q{TODO: one-line summary of your gem}
     gem.description = %Q{TODO: longer description of your gem}
     gem.email = "kkohno@gmail.com"
-    gem.homepage = "http://github.com/jugyo/ever_clip"
+    gem.homepage = "http://github.com/jugyo/everclip"
     gem.authors = ["jugyo"]
     gem.add_dependency "pb"
     gem.add_dependency "sinatra"
     gem.add_dependency "sequel"
     gem.add_dependency "haml"
-    gem.add_dependency "sass"
     gem.add_development_dependency "rspec", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -53,7 +52,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "ever_clip #{version}"
+  rdoc.title = "everclip #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

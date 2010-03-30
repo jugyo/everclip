@@ -4,7 +4,7 @@
 $:.unshift(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-require 'ever_clip'
+require 'everclip'
 
 # TODO: fix to show help
 

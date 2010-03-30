@@ -2,7 +2,7 @@
 
 $:.unshift(File.dirname(__FILE__) + "/..")
 
-require 'ever_clip'
+require 'everclip'
 
 EverClip.init
 run EverClip::Server.new

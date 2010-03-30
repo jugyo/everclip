@@ -4,17 +4,17 @@ require "yaml"
 require "sequel"
 
 module EverClip
-  PID_FILE = "/tmp/ever_clip_pid"
+  PID_FILE = "/tmp/everclip_pid"
 
   class << self
     attr_reader :dir, :db
 
     def init(dir = nil)
-      @dir = File.expand_path(dir || "~/.ever_clip")
+      @dir = File.expand_path(dir || "~/.everclip")
       @db = Sequel.sqlite(File.join(@dir, 'db'))
-      require 'ever_clip/clip'
-      require 'ever_clip/clip_logger'
-      require 'ever_clip/server'
+      require 'everclip/clip'
+      require 'everclip/clip_logger'
+      require 'everclip/server'
     end
 
     def config
