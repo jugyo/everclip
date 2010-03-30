@@ -13,7 +13,7 @@ module EverClip
   class Clip < Sequel::Model
     def title
       # TODO: sinatra の helper として定義した方がいいかも
-      text.split(//)[0..20].join
+      text.split(//)[0..20].join + ' ...'
     end
 
     def self.<<(arg)
