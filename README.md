@@ -3,6 +3,8 @@ EverClip
 
 EverClip is a Clipboard logger that have Web UI.
 
+![EverClip](http://farm3.static.flickr.com/2733/4478766291_657de835ba_o.png)
+
 Usage
 -----
 
