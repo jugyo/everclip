@@ -22,6 +22,29 @@ Edit everclip config file:
 
     % everclip config
 
+Install
+-----
+
+    % git clone git://github.com/jugyo/everclip.git
+    % cd everclip
+    % rake install
+
+Sorry, it is not yet a gem.
+
+Supported Platforms
+-----
+
+* Mac OSX
+
+Requirements
+-----
+
+* pb
+* sinatra
+* sequel
+* haml
+* sqlite3
+
 Note on Patches/Pull Requests
 -----
 
