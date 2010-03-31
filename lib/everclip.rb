@@ -55,23 +55,24 @@ EOS
 
       puts "## EverClip has started ##"
 
+      File.open(PID_FILE, 'w') { |f| f << Process.pid }
+
       EverClip::Server.run!(
         :Host => config[:host] || 'localhost',
         :Port => config[:port] || 4567
       )
-
-      File.open(PID_FILE, 'w') { |f| f << Process.pid }
     end
 
     def stop
-      return unless File.exists?(PID_FILE)
-      Process.kill(:INT, File.read(PID_FILE).to_i)
+      raise "everclip is not running!" unless File.exists?(PID_FILE)
+
+      begin
+        Process.kill(:INT, File.read(PID_FILE).to_i)
+      ensure
+        remove_pid_file
+      end
     rescue Exception => e
       puts e.message
-    ensure
-      remove_pid_file
-    end
-
     end
 
     def open
