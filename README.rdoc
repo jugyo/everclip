@@ -1,6 +1,6 @@
-= everclip
+= EverClip
 
-Description goes here.
+EverClip is a Clipboard logger.
 
 == Note on Patches/Pull Requests
  
