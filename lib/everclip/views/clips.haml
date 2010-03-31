@@ -1,0 +1,8 @@
+%ul
+  - @clips.each do |clip|
+    %li
+      .clip
+        .title
+          %a{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
+        .text
+          %pre{:id => "clip_#{clip.id}"}= clip.text

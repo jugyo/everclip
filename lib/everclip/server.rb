@@ -18,6 +18,12 @@ module EverClip
       @clips = Clip.order(:created_at.desc).limit(100)
       haml :index
     end
+
+    get '/search' do
+      query = params[:q]
+      @clips = Clip.filter("text like ?", "%#{query}%").order(:created_at.desc).limit(100)
+      partial :clips
+    end
     
     get '/clip/:id' do
       @clip = Clip[params[:id]]
@@ -26,6 +32,12 @@ module EverClip
     get '/copy/:id' do
       # TODO: クリップボードに読み込み
       ''
+    end
+
+    helpers do
+      def partial(page, options={})
+        haml page, options.merge!(:layout => false)
+      end
     end
   end
 end

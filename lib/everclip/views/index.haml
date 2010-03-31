@@ -4,18 +4,13 @@
     %link{:rel => 'stylesheet', :href => '/css', :type => 'text/css'}
     %script{:language => 'javascript', :src => '/jquery.js'}
     %script{:language => 'javascript', :src => '/jquery.scrollTo.js'}
+    %script{:language => 'javascript', :src => '/jquery.timer.js'}
     %script{:language => 'javascript', :src => '/app.js'}
   %body
     #wrap
-      #try_me
-      #search
+      #search_form
         %input#search{:type => 'text', :size => 60}
+        %img#loading{:src => 'loading.gif', :style => 'display: none'}
+
       #clips
-        %ul
-          - @clips.each do |clip|
-            %li
-              .clip
-                .title
-                  %a{:href => 'javascript:void(0)', :onclick => "$('#clip_#{clip.id}').toggle()"}= clip.title
-                .text
-                  %pre{:id => "clip_#{clip.id}"}= clip.text
+        != partial :clips
