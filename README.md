@@ -1,7 +1,7 @@
 EverClip
 ========
 
-EverClip is a Clipboard logger.
+EverClip is a Clipboard logger that have Web UI.
 
 Usage
 -----
