@@ -72,9 +72,6 @@ EOS
       remove_pid_file
     end
 
-    def restart
-      stop
-      start
     end
 
     def open

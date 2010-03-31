@@ -8,7 +8,7 @@ require 'everclip'
 
 # TODO: fix to show help
 
-if /^(start|stop|restart|open|config)$/ =~ ARGV[0]
+if /^(start|stop|open|config)$/ =~ ARGV[0]
   mode = $1
   EverClip.init(ARGV[1])
   EverClip.send(mode)
