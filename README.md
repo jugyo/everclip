@@ -20,10 +20,6 @@ Open everclip client:
 
     % everclip open
 
-Edit everclip config file:
-
-    % everclip config
-
 Install
 -----
 
