@@ -12,7 +12,7 @@ begin
     gem.authors = ["jugyo"]
     gem.add_dependency "pb"
     gem.add_dependency "sinatra"
-    gem.add_dependency "sequel"
+    gem.add_dependency "sequel", ">= 3.9.0"
     gem.add_dependency "haml"
     gem.add_development_dependency "rspec", ">= 0"
     gem.add_development_dependency "rr", ">= 0"
