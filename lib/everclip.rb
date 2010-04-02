@@ -5,18 +5,11 @@ require "sequel"
 require "fileutils"
 
 module EverClip
-  PID_FILE = "/tmp/everclip_pid"
-
   class << self
     attr_reader :dir, :db, :config
 
     # TODO: deamonize
     def start
-      if File.exists?(PID_FILE)
-        puts "EverClip is already running!"
-        exit!
-      end
-
       puts "## EverClip has started ##"
 
       setup_dir
@@ -29,20 +22,7 @@ module EverClip
 
       start_clip_logger
       setup_at_exit
-      create_pid_file
       start_server
-    end
-
-    def stop
-      raise "everclip is not running!" unless File.exists?(PID_FILE)
-
-      begin
-        Process.kill(:INT, File.read(PID_FILE).to_i)
-      ensure
-        remove_pid_file
-      end
-    rescue Exception => e
-      puts e.message
     end
 
     def open
@@ -89,14 +69,6 @@ EOS
       File.join(dir, 'config')
     end
 
-    def remove_pid_file
-      File.delete(PID_FILE) if File.exists?(PID_FILE)
-    end
-
-    def create_pid_file
-      File.open(PID_FILE, 'w') { |f| f << Process.pid }
-    end
-
     def start_server
       EverClip::Server.run!(
         :Host => config[:host] || 'localhost',
@@ -114,7 +86,6 @@ EOS
     def setup_at_exit
       at_exit do
         EverClip::ClipLogger.stop!
-        remove_pid_file
         puts "## EverClip has ended ##"
       end
     end
